@@ -1,0 +1,11 @@
+.grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: .7rem; }
+.cardBtn { display: flex; align-items: center; gap: .8rem; text-align: left; background: #1a1d31; color: var(--text); border: 1px solid var(--line); border-radius: 12px; padding: .9rem; transition: border-color .2s, transform .2s; }
+.cardBtn:hover:not(:disabled) { border-color: var(--gold); transform: translateY(-2px); }
+.cardBtn:disabled { opacity: .55; }
+.text { display: grid; }
+.text small { color: var(--muted); }
+.text em { color: var(--gold); font-style: normal; font-weight: 600; font-size: .85rem; }
+.icon { border-radius: 10px; object-fit: cover; }
+.cardBtn { background: linear-gradient(#242843, #171a2d); box-shadow: 0 5px 0 #0d0e19, 0 1px 0 rgba(255, 255, 255, .08) inset; }
+.cardBtn:hover:not(:disabled) { transform: translateY(-4px) rotateX(4deg); box-shadow: 0 9px 0 #0d0e19, 0 18px 28px -8px rgba(232, 184, 74, .3); }
+.icon { filter: drop-shadow(0 6px 6px rgba(0, 0, 0, .6)); }

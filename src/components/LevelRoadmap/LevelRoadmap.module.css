@@ -1,0 +1,19 @@
+.track { display: flex; gap: .6rem; overflow-x: auto; padding-bottom: .6rem; }
+.node { flex: 0 0 96px; background: #1a1d31; border: 1px solid var(--line); border-radius: 12px; padding: .7rem .3rem; color: var(--text); display: grid; gap: .2rem; justify-items: center; transition: transform .2s; }
+.node:hover { transform: translateY(-3px); }
+.node small { font-size: .68rem; color: var(--muted); }
+.circle { width: 32px; height: 32px; border-radius: 50%; display: grid; place-items: center; background: #2a2e4a; font-weight: 700; }
+.completed .circle { background: var(--green); color: #07200f; }
+.completed small { color: var(--green); }
+.current { border-color: var(--gold); box-shadow: 0 0 0 1px var(--gold); }
+.current .circle { background: var(--gold); color: #1a1405; }
+.current small { color: var(--gold); }
+.next .circle { background: var(--purple); }
+.next small { color: #a58bff; }
+.locked { opacity: .6; }
+.details { margin-top: .6rem; display: grid; gap: .2rem; background: #1a1d31; border-radius: 12px; padding: .8rem; }
+.node { background: linear-gradient(#242843, #171a2d); box-shadow: 0 5px 0 #0d0e19, 0 1px 0 rgba(255, 255, 255, .08) inset; }
+.circle { box-shadow: 0 3px 0 rgba(0, 0, 0, .5), 0 1px 0 rgba(255, 255, 255, .4) inset; }
+.current { box-shadow: 0 5px 0 #7d5a16, 0 0 22px rgba(232, 184, 74, .35); background: linear-gradient(#3a3020, #1d1a22); }
+.current .circle { animation: pulse 2s infinite; }
+@keyframes pulse { 50% { box-shadow: 0 0 0 7px rgba(232, 184, 74, .18); } }
