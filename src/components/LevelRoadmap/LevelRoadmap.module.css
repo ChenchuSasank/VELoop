@@ -7,7 +7,7 @@
 
 .node {
     flex: 0 0 96px;
-    background: #1a1d31;
+    background: var(--surface);
     border: 1px solid var(--line);
     border-radius: 12px;
     padding: .7rem .3rem;
@@ -33,7 +33,7 @@
     border-radius: 50%;
     display: grid;
     place-items: center;
-    background: #2a2e4a;
+    background: var(--circle);
     font-weight: 700;
 }
 
@@ -76,14 +76,14 @@
     margin-top: .6rem;
     display: grid;
     gap: .2rem;
-    background: #1a1d31;
+    background: var(--surface);
     border-radius: 12px;
     padding: .8rem;
 }
 
 .node {
-    background: linear-gradient(#242843, #171a2d);
-    box-shadow: 0 5px 0 #0d0e19, 0 1px 0 rgba(255, 255, 255, .08) inset;
+    background: var(--surface-grad);
+    box-shadow: var(--tile-shadow);
 }
 
 .circle {
@@ -92,7 +92,7 @@
 
 .current {
     box-shadow: 0 5px 0 #7d5a16, 0 0 22px rgba(232, 184, 74, .35);
-    background: linear-gradient(#3a3020, #1d1a22);
+    background: var(--current-bg);
 }
 
 .current .circle {

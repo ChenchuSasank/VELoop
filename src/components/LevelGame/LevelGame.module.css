@@ -11,11 +11,11 @@
 }
 
 .hud>span {
-  background: #11131f;
+  background: var(--deep);
   border: 1px solid var(--line);
   border-radius: 99px;
   padding: .25rem .7rem;
-  box-shadow: 0 3px 0 #0d0e19;
+  box-shadow: 0 3px 0 var(--edge);
   display: inline-flex;
   gap: .3rem;
   align-items: center;
@@ -115,12 +115,12 @@
 }
 
 .powers button {
-  background: linear-gradient(#242843, #171a2d);
+  background: var(--surface-grad);
   color: var(--text);
   border: 1px solid var(--line);
   border-radius: 10px;
   padding: .55rem .3rem;
-  box-shadow: 0 4px 0 #0d0e19;
+  box-shadow: 0 4px 0 var(--edge);
   display: flex;
   gap: .3rem;
   justify-content: center;

@@ -34,7 +34,7 @@
 .badge span {
   font-size: .65rem;
   letter-spacing: 1px;
-  color: var(--muted);
+  color: #9a9fbb;
 }
 
 .badge b {
@@ -75,7 +75,7 @@
 }
 
 .boost div {
-  background: #1a1d31;
+  background: var(--surface);
   border: 1px solid var(--line);
   border-radius: 12px;
   padding: .7rem .3rem;
@@ -109,8 +109,8 @@
 }
 
 .boost div {
-  background: linear-gradient(#222640, #171a2d);
-  box-shadow: 0 4px 0 #0d0e19, 0 1px 0 rgba(255, 255, 255, .08) inset;
+  background: var(--surface-grad);
+  box-shadow: var(--tile-shadow);
 }
 
 @keyframes hover {

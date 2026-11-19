@@ -19,7 +19,7 @@
   bottom: 0;
   width: 6px;
   margin-left: -3px;
-  background: #232640;
+  background: var(--map-line);
   border-radius: 9px;
 }
 
@@ -68,12 +68,12 @@
   justify-content: space-between;
   align-items: center;
   gap: .6rem;
-  background: #1a1d31;
+  background: var(--surface);
   border: 1px solid var(--line);
   border-radius: 12px;
   padding: .8rem;
   margin-bottom: .5rem;
-  box-shadow: 0 4px 0 #0d0e19;
+  box-shadow: 0 4px 0 var(--edge);
 }
 
 .you {
@@ -91,7 +91,7 @@
 }
 
 .stat {
-  background: #1a1d31;
+  background: var(--surface);
   border: 1px solid var(--line);
   border-radius: 12px;
   padding: .8rem;

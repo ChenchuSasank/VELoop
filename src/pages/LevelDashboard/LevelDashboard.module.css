@@ -27,7 +27,7 @@
 }
 
 .skeleton {
-    background: linear-gradient(90deg, var(--card) 25%, #272b45 50%, var(--card) 75%);
+    background: linear-gradient(90deg, var(--card) 25%, var(--skeleton) 50%, var(--card) 75%);
     background-size: 200% 100%;
     animation: shine 1.2s infinite;
     border-radius: 16px;
