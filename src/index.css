@@ -1,9 +1,14 @@
-/* DARK is the default. LIGHT values apply when <html data-theme="light">. */
 :root {
   color-scheme: dark;
-  --bg: #161827; --card: #1e2135; --line: #2d3150;
-  --gold: #e8b84a; --gold-dark: #b8862b; --purple: #7c5cff;
-  --green: #4cc38a; --text: #f3f4f8; --muted: #9a9fbb;
+  --bg: #161827;
+  --card: #1e2135;
+  --line: #2d3150;
+  --gold: #e8b84a;
+  --gold-dark: #b8862b;
+  --purple: #7c5cff;
+  --green: #4cc38a;
+  --text: #f3f4f8;
+  --muted: #9a9fbb;
 
   --surface: #1a1d31;
   --surface-grad: linear-gradient(#242843, #171a2d);
@@ -21,13 +26,21 @@
   --card-shadow: 0 1px 0 rgba(255, 255, 255, .08) inset, 0 18px 40px -12px rgba(0, 0, 0, .7), 0 2px 0 #0d0e19;
   --card-shadow-hover: 0 1px 0 rgba(255, 255, 255, .1) inset, 0 28px 50px -14px rgba(0, 0, 0, .8), 0 0 0 1px rgba(232, 184, 74, .25);
   --tile-shadow: 0 5px 0 #0d0e19, 0 1px 0 rgba(255, 255, 255, .08) inset;
-  --glow-1: rgba(124, 92, 255, .18); --glow-2: rgba(232, 184, 74, .12);
+  --glow-1: rgba(124, 92, 255, .18);
+  --glow-2: rgba(232, 184, 74, .12);
 }
+
 :root[data-theme="light"] {
   color-scheme: light;
-  --bg: #f3f4fa; --card: #ffffff; --line: #d9dcee;
-  --gold: #b97a00; --gold-dark: #b8862b; --purple: #6a4be0;
-  --green: #1f9d63; --text: #1b1e33; --muted: #5b6180;
+  --bg: #f3f4fa;
+  --card: #ffffff;
+  --line: #d9dcee;
+  --gold: #b97a00;
+  --gold-dark: #b8862b;
+  --purple: #6a4be0;
+  --green: #1f9d63;
+  --text: #1b1e33;
+  --muted: #5b6180;
 
   --surface: #f1f3fb;
   --surface-grad: linear-gradient(#ffffff, #eceffa);
@@ -45,10 +58,36 @@
   --card-shadow: 0 1px 0 rgba(255, 255, 255, .9) inset, 0 14px 30px -14px rgba(40, 45, 90, .28), 0 2px 0 #d3d7ec;
   --card-shadow-hover: 0 1px 0 rgba(255, 255, 255, .9) inset, 0 22px 40px -16px rgba(40, 45, 90, .35), 0 0 0 1px rgba(185, 122, 0, .35);
   --tile-shadow: 0 5px 0 #d3d7ec, 0 1px 0 rgba(255, 255, 255, .9) inset;
-  --glow-1: rgba(124, 92, 255, .10); --glow-2: rgba(232, 184, 74, .14);
+  --glow-1: rgba(124, 92, 255, .10);
+  --glow-2: rgba(232, 184, 74, .14);
 }
-body { background: var(--bg); color: var(--text); font-family: 'Segoe UI', system-ui, sans-serif; margin: 0; transition: background-color .25s, color .25s; }
-button { font-family: inherit; }
-button:focus-visible, a:focus-visible { outline: 2px solid var(--gold); outline-offset: 2px; }
-@media (prefers-reduced-motion: reduce) { * { animation: none !important; transition: none !important; } }
-body { background-image: radial-gradient(900px 500px at 15% -5%, var(--glow-1), transparent 60%), radial-gradient(800px 500px at 95% 10%, var(--glow-2), transparent 60%); background-attachment: fixed; }
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: 'Segoe UI', system-ui, sans-serif;
+  margin: 0;
+  transition: background-color .25s, color .25s;
+}
+
+button {
+  font-family: inherit;
+}
+
+button:focus-visible,
+a:focus-visible {
+  outline: 2px solid var(--gold);
+  outline-offset: 2px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation: none !important;
+    transition: none !important;
+  }
+}
+
+body {
+  background-image: radial-gradient(900px 500px at 15% -5%, var(--glow-1), transparent 60%), radial-gradient(800px 500px at 95% 10%, var(--glow-2), transparent 60%);
+  background-attachment: fixed;
+}

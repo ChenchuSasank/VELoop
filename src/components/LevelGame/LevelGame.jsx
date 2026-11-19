@@ -61,13 +61,13 @@ export default function LevelGame({ config, boostUnlocked, onFinish }) {
       else if (s.lives <= 0) { clearInterval(loop); finish(false) }
     }, 40)
     return () => clearInterval(loop)
-  }, []) // eslint-disable-line
+  }, [])
 
   useEffect(() => {
     if (view.time <= 0) { finish(goalMet(g.current)); return }
     const t = setTimeout(() => setView((v) => ({ ...v, time: v.time - 1 })), 1000)
     return () => clearTimeout(t)
-  }, [view.time]) // eslint-disable-line
+  }, [view.time])
 
   const progress = Math.min(config.goal.amount, config.goal.type === 'score' ? view.score : config.goal.type === 'coins' ? view.coins : view.gems)
   const mult = Math.min(5, 1 + Math.floor(view.combo / 5))

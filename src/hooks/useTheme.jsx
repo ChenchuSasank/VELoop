@@ -1,6 +1,5 @@
 import { createContext, useContext, useEffect, useState } from 'react'
 
-// mode: 'dark' | 'light' | 'system' (follow the device setting). Saved in the browser.
 const KEY = 'veloopTheme'
 const Ctx = createContext(null)
 const systemTheme = () => (window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark')
@@ -8,7 +7,7 @@ const systemTheme = () => (window.matchMedia('(prefers-color-scheme: light)').ma
 export function ThemeProvider({ children }) {
   const [mode, setMode] = useState(() => { try { return localStorage.getItem(KEY) || 'dark' } catch { return 'dark' } })
   const [system, setSystem] = useState(systemTheme)
-  const theme = mode === 'system' ? system : mode // the theme actually shown
+  const theme = mode === 'system' ? system : mode
 
   useEffect(() => {
     const mq = window.matchMedia('(prefers-color-scheme: light)')

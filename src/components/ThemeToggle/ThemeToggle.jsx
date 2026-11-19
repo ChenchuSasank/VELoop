@@ -2,7 +2,6 @@ import { Sun, Moon } from 'lucide-react'
 import { useTheme } from '../../hooks/useTheme'
 import styles from './ThemeToggle.module.css'
 
-// Quick button: switches between light and dark
 export default function ThemeToggle({ className = '' }) {
   const { theme, toggle } = useTheme()
   const next = theme === 'dark' ? 'light' : 'dark'
@@ -13,7 +12,6 @@ export default function ThemeToggle({ className = '' }) {
   )
 }
 
-// Full chooser (Light / Dark / Auto) used on the Profile page
 export function ThemeSelect() {
   const { mode, setMode } = useTheme()
   const options = [['light', 'Light'], ['dark', 'Dark'], ['system', 'Auto']]
