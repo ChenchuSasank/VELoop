@@ -11,11 +11,10 @@ export default function LevelPlay() {
   const n = Number(useParams().n)
   const navigate = useNavigate()
   const { unlocked, completed, complete } = useProgress()
-  const [phase, setPhase] = useState('intro') // intro | play | result
+  const [phase, setPhase] = useState('intro')
   const [result, setResult] = useState(null)
   const [round, setRound] = useState(0)
 
-  // A locked level can't be opened by typing the address
   if (!Number.isInteger(n) || n < 1 || n > unlocked) return <Navigate to="/Lvl-Dashboard/levels" replace />
 
   const config = levelConfig(n)

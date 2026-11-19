@@ -1,10 +1,40 @@
 :root {
-  --bg: #161827; --card: #1e2135; --line: #2d3150;
-  --gold: #e8b84a; --gold-dark: #b8862b; --purple: #7c5cff;
-  --green: #4cc38a; --text: #f3f4f8; --muted: #9a9fbb;
+  --bg: #161827;
+  --card: #1e2135;
+  --line: #2d3150;
+  --gold: #e8b84a;
+  --gold-dark: #b8862b;
+  --purple: #7c5cff;
+  --green: #4cc38a;
+  --text: #f3f4f8;
+  --muted: #9a9fbb;
 }
-body { background: var(--bg); color: var(--text); font-family: 'Segoe UI', system-ui, sans-serif; margin: 0; }
-button { font-family: inherit; }
-button:focus-visible, a:focus-visible { outline: 2px solid var(--gold); outline-offset: 2px; }
-@media (prefers-reduced-motion: reduce) { * { animation: none !important; transition: none !important; } }
-body { background-image: radial-gradient(900px 500px at 15% -5%, rgba(124, 92, 255, .18), transparent 60%), radial-gradient(800px 500px at 95% 10%, rgba(232, 184, 74, .12), transparent 60%); background-attachment: fixed; }
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: 'Segoe UI', system-ui, sans-serif;
+  margin: 0;
+}
+
+button {
+  font-family: inherit;
+}
+
+button:focus-visible,
+a:focus-visible {
+  outline: 2px solid var(--gold);
+  outline-offset: 2px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation: none !important;
+    transition: none !important;
+  }
+}
+
+body {
+  background-image: radial-gradient(900px 500px at 15% -5%, rgba(124, 92, 255, .18), transparent 60%), radial-gradient(800px 500px at 95% 10%, rgba(232, 184, 74, .12), transparent 60%);
+  background-attachment: fixed;
+}

@@ -10,7 +10,6 @@ const tabs = [
   { to: '/Lvl-Dashboard/profile', label: 'Profile', icon: User },
 ]
 
-// Shared layout: navigation on every page (top bar on desktop, bottom bar on phones)
 export default function Layout() {
   return (
     <>

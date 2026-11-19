@@ -1,6 +1,5 @@
 import styles from './IntroSplash.module.css'
 
-// Short opening animation shown when the page opens
 export default function IntroSplash() {
   return (
     <div className={styles.wrap} aria-label="Loading VELOOP Rewards">

@@ -1,9 +1,8 @@
 import { useState, useEffect, useCallback } from 'react'
 import { user } from '../data/levelData'
 
-// Simulates an API call. Open /Lvl-Dashboard?error=1 to see the error state.
 export default function useLevelData() {
-  const [status, setStatus] = useState('loading') // loading | ready | error
+  const [status, setStatus] = useState('loading')
   const [data, setData] = useState(null)
 
   const load = useCallback(() => {

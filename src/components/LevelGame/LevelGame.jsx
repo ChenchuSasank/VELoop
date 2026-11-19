@@ -10,7 +10,6 @@ const GOOD = [
   { kind: 'orb', img: orb, points: 20 }, { kind: 'gem', img: gem, points: 30 }, { kind: 'coin', img: coin, points: 10 },
 ]
 
-// One level of the game. The look and difficulty come from `config` (see data/levels.js).
 export default function LevelGame({ config, boostUnlocked, onFinish }) {
   const [view, setView] = useState({ items: [], score: 0, lives: config.lives, combo: 0, coins: 0, gems: 0, time: config.seconds, lane: 1, shield: false, slow: false, boost: false })
   const [used, setUsed] = useState({ shield: false, slow: false, boost: false })

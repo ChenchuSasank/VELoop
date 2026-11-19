@@ -1,7 +1,5 @@
-// DEMO DATA ONLY. Replace with API data when the backend is ready.
-export const user = { name: 'VeLooper', xp: 6420, streak: 7, tasksDone: 4, tasksTotal: 8, xpToday: 215 }
+export const user = { name: 'VeLooper', xp: 0, streak: 0, tasksDone: 0, tasksTotal: 8, xpToday: 0 }
 
-// "xp" is the total XP needed to reach that level.
 export const levels = [
   { level: 1, name: 'Starter',  xp: 0,     reward: '50 VEs' },
   { level: 2, name: 'Explorer', xp: 500,   reward: '100 VEs' },
@@ -13,41 +11,27 @@ export const levels = [
   { level: 8, name: 'Legend',   xp: 15000, reward: '2,000 VEs' },
 ]
 
-// status: 'live' = existing feature, 'soon' = concept / coming soon
 export const earnItems = [
   { id: 'watch',  title: 'Watch & Earn', text: 'Watch ads and earn',      xp: '+50 XP',  status: 'live' },
   { id: 'daily',  title: 'Daily Tasks',  text: 'Complete daily tasks',    xp: '+30 XP',  status: 'live' },
   { id: 'refer',  title: 'Refer & Earn', text: 'Invite friends and earn', xp: '+100 XP', status: 'live' },
-  { id: 'game',   title: 'XP Catcher',   text: 'Catch orbs and coins',    xp: '+10 XP',  status: 'live' },
+  { id: 'game',   title: 'VE Dash',      text: 'Dash, collect and earn',  xp: '+10 XP',  status: 'live' },
   { id: 'mini',   title: 'Mini Games',   text: 'More games on the way',   xp: '+75 XP',  status: 'soon' },
   { id: 'streak', title: 'Streak Bonus', text: 'Maintain your streak',    xp: '+25 XP',  status: 'soon' },
 ]
 
-export const activity = [
-  { id: 1, xp: '+20 XP', title: 'Referral Bonus',          time: 'Today, 10:45 AM' },
-  { id: 2, xp: '+50 XP', title: 'Daily Mission Completed', time: 'Today, 09:12 AM' },
-  { id: 3, xp: '+75 XP', title: 'Mini Game Win',           time: 'Today, 08:30 AM' },
-  { id: 4, xp: '+25 XP', title: 'Streak Bonus',            time: 'Today, 07:20 AM' },
-]
-
-// Game rules shown to the user (demo values until the product team approves them)
-export const gameRules = {
-  seconds: 20,
-  plays: 'Unlimited in this demo (the real limit will come from the backend).',
-  scoring: 'XP orb = 10 points, VE coin = 5 points, gem = 15 points.',
-  reward: 'XP reward = score ÷ 4 (max 30 XP). Score 80+ also gives +12 VEs.',
-}
+export const activity = []
 
 export function getLevel(xp) {
   let current = levels[0]
   levels.forEach((l) => { if (xp >= l.xp) current = l })
   return current
 }
+
 export function getNextLevel(level) {
   return levels.find((l) => l.level === level + 1) || null
 }
 
-// VE Dash rules (DEMO values until the product team approves real ones)
 export const dashRules = {
   seconds: 30,
   lives: 3,

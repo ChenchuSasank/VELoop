@@ -2,7 +2,6 @@ import { useProgress } from '../../hooks/useProgress'
 import shared from '../../styles/shared.module.css'
 import styles from '../Pages.module.css'
 
-// DEMO leaderboard. A real one needs the backend.
 const players = [['Aarav', 42], ['Meera', 35], ['Kabir', 28], ['Isha', 21], ['Rohan', 14], ['Diya', 9], ['Neel', 4]]
 
 export default function Ranks() {

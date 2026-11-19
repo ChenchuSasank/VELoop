@@ -8,11 +8,10 @@ import { dashRules } from '../../data/levelData'
 import shared from '../../styles/shared.module.css'
 import styles from './VEDash.module.css'
 
-// Good items give points (DEMO values). Hazards cost a life.
 const GOOD = [{ img: coin, points: 10 }, { img: coin, points: 10 }, { img: orb, points: 20 }, { img: gem, points: 30 }]
 
 export default function VEDash({ onReward }) {
-  const [phase, setPhase] = useState('start') // start | play | result
+  const [phase, setPhase] = useState('start')
   const [score, setScore] = useState(0)
   const [lives, setLives] = useState(dashRules.lives)
   const [combo, setCombo] = useState(0)
@@ -36,10 +35,9 @@ export default function VEDash({ onReward }) {
     setReward({ xp, ves: s >= 800 ? 15 : 0 })
     if (s > best) { setBest(s); localStorage.setItem('veDashBest', String(s)) }
     setPhase('result')
-    onReward(xp) // local state only - real backend call goes here later
+    onReward(xp)
   }
 
-  // Game loop (every 40ms): move items, spawn, check collisions. Speed grows as time passes.
   useEffect(() => {
     if (phase !== 'play') return
     let tick = 0
@@ -65,14 +63,14 @@ export default function VEDash({ onReward }) {
       if (s.lives <= 0) { clearInterval(loop); finish() }
     }, 40)
     return () => clearInterval(loop)
-  }, [phase]) // eslint-disable-line
+  }, [phase])
 
   useEffect(() => {
     if (phase !== 'play') return
     if (time <= 0) { finish(); return }
     const t = setTimeout(() => setTime((v) => v - 1), 1000)
     return () => clearTimeout(t)
-  }, [phase, time]) // eslint-disable-line
+  }, [phase, time])
 
   const onTap = (e) => {
     const r = e.currentTarget.getBoundingClientRect()

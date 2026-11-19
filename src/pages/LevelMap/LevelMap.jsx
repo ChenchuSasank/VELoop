@@ -6,7 +6,6 @@ import { levelConfig } from '../../data/levels'
 import shared from '../../styles/shared.module.css'
 import styles from '../Pages.module.css'
 
-// Candy-Crush style level path. Level 1 is at the bottom. Levels never end: "Show more" adds 10.
 export default function LevelMap() {
   const { unlocked, stars } = useProgress()
   const [extra, setExtra] = useState(0)

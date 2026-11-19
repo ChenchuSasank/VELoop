@@ -12,7 +12,6 @@ const icons = { watch, daily, refer, game, mini, streak }
 
 export default function EarnMoreXP() {
   const handleClick = (item) => {
-    // Existing routes would go here (navigate('/watch') etc.). The game card scrolls up to the game.
     if (item.id === 'game') window.scrollTo({ top: 0, behavior: 'smooth' })
     else alert(`${item.title}: connect the existing route here.`)
   }
