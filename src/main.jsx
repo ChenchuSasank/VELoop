@@ -14,7 +14,7 @@ import { ProgressProvider } from './hooks/useProgress'
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <ProgressProvider>
-    <BrowserRouter>
+    <BrowserRouter basename={import.meta.env.BASE_URL.replace(/\/$/, '')}>
       <Routes>
         <Route element={<Layout />}>
           <Route path="/Lvl-Dashboard" element={<LevelDashboard />} />
