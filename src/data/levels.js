@@ -5,18 +5,14 @@ export const BOOST_UNLOCK = 15
 export function levelConfig(n) {
   const i = (n - 1) % 20
   const round = Math.floor((n - 1) / 20)
-  const type = ['score', 'coins', 'gems'][(n - 1) % 3]
-  const goal =
-    type === 'score' ? { type, amount: Math.min(1400, 150 + n * 40), label: 'Reach the target score' }
-    : type === 'coins' ? { type, amount: 8 + Math.min(Math.floor(n / 3), 8), label: 'Collect VE coins' }
-    : { type, amount: 3 + Math.min(Math.floor(n / 6), 5), label: 'Collect gems' }
+  const type = n % 3 === 2 ? 'perfects' : 'floors'
+  const goal = type === 'floors'
+    ? { type, amount: 8 + Math.min(n, 30), label: 'Build the tower. Floors to stack' }
+    : { type, amount: 3 + Math.min(Math.floor(n / 3), 8), label: 'Land perfect drops' }
   return {
     n, goal, hue: HUES[i], pattern: i % 4,
     name: NAMES[i] + (round > 0 ? ` ${round + 1}` : ''),
-    seconds: 30, lives: 3,
-    speed: 1.5 + Math.min(n, 60) * 0.035,
-    hazard: Math.min(0.5, 0.2 + n * 0.01),
-    gap: Math.max(7, 14 - Math.floor(n / 5)),
+    speed: 0.55 + Math.min(n, 50) * 0.03,
   }
 }
 
@@ -26,4 +22,11 @@ export const milestones = [
   { level: 30, text: '25 Gems' }, { level: 40, text: '1,000 VEs' }, { level: 50, text: '50 Gems' },
 ]
 
-export const nextMilestone = (completed) => milestones.find((m) => m.level > completed) || null
+export function levelReward(n) {
+  const m = milestones.find((x) => x.level === n)
+  return m ? m.text : `${n * 10} VEs`
+}
+
+export function nextMilestone(completed) {
+  return milestones.find((m) => m.level > completed) || null
+}

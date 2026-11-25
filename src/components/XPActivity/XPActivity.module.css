@@ -11,7 +11,7 @@
     justify-content: space-between;
     align-items: center;
     gap: .5rem;
-    background: var(--surface);
+    background: #1a1d31;
     border: 1px solid var(--line);
     border-radius: 12px;
     padding: .7rem .8rem;
@@ -30,7 +30,7 @@
 
 .summary {
     margin-top: .8rem;
-    background: var(--surface);
+    background: #1a1d31;
     border: 1px solid var(--line);
     border-radius: 12px;
     padding: .8rem;

@@ -9,7 +9,7 @@
     align-items: center;
     gap: .8rem;
     text-align: left;
-    background: var(--surface);
+    background: #1a1d31;
     color: var(--text);
     border: 1px solid var(--line);
     border-radius: 12px;
@@ -47,13 +47,13 @@
 }
 
 .cardBtn {
-    background: var(--surface-grad);
-    box-shadow: var(--tile-shadow);
+    background: linear-gradient(#242843, #171a2d);
+    box-shadow: 0 5px 0 #0d0e19, 0 1px 0 rgba(255, 255, 255, .08) inset;
 }
 
 .cardBtn:hover:not(:disabled) {
     transform: translateY(-4px) rotateX(4deg);
-    box-shadow: 0 9px 0 var(--edge), 0 18px 28px -8px rgba(232, 184, 74, .3);
+    box-shadow: 0 9px 0 #0d0e19, 0 18px 28px -8px rgba(232, 184, 74, .3);
 }
 
 .icon {

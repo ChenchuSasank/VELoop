@@ -11,101 +11,228 @@
 }
 
 .hud>span {
-  background: var(--deep);
-  border: 1px solid var(--line);
-  border-radius: 99px;
-  padding: .25rem .7rem;
-  box-shadow: 0 3px 0 var(--edge);
+  background: rgba(17, 19, 31, .8);
+  backdrop-filter: blur(6px);
+  border: 1px solid rgba(255, 255, 255, .1);
+  border-radius: 10px;
+  padding: .3rem .75rem;
   display: inline-flex;
-  gap: .3rem;
+  gap: .35rem;
   align-items: center;
+  font-size: .9rem;
+  letter-spacing: .5px;
 }
 
-.goal,
-.combo {
+.score {
   color: var(--gold);
   font-weight: 800;
+  font-size: 1.05rem;
+}
+
+.goalBar {
+  height: 6px;
+  background: #0f1120;
+  border-radius: 9px;
+  overflow: hidden;
+}
+
+.goalBar i {
+  display: block;
+  height: 100%;
+  background: linear-gradient(90deg, var(--gold-dark), #ffe08a);
+  box-shadow: 0 0 10px #e8b84a99;
+  transition: width .25s;
 }
 
 .stage {
-  perspective: 600px;
-  height: 380px;
+  position: relative;
+  height: 440px;
   overflow: hidden;
-  border-radius: 14px;
+  border-radius: 16px;
   outline: none;
+  cursor: pointer;
   touch-action: none;
   user-select: none;
-  border: 1px solid hsl(var(--h) 50% 40% / .5);
-  background: radial-gradient(ellipse at 50% 0%, hsl(var(--h) 35% 26%), hsl(var(--h) 35% 7%) 75%);
-  box-shadow: inset 0 0 40px #000a;
+  border: 1px solid rgba(255, 255, 255, .12);
+  box-shadow: inset 0 0 60px #000a, 0 18px 40px -14px #000;
 }
 
-.track {
-  position: relative;
-  height: 130%;
-  margin-top: -8%;
-  transform: rotateX(28deg);
-  transform-origin: 50% 100%;
-  border-radius: 12px;
-  background: hsl(var(--h) 30% 14%);
-}
-
-.p0 .track {
-  background: repeating-linear-gradient(90deg, transparent 0 33.2%, #fff2 33.2% 33.5%), hsl(var(--h) 30% 14%);
-}
-
-.p1 .track {
-  background: repeating-linear-gradient(0deg, #fff1 0 2px, transparent 2px 40px), repeating-linear-gradient(90deg, transparent 0 33.2%, #fff3 33.2% 33.5%), hsl(var(--h) 30% 14%);
-}
-
-.p2 .track {
-  background: radial-gradient(#fff2 1.5px, transparent 2px) 0 0 / 22px 22px, repeating-linear-gradient(90deg, transparent 0 33.2%, #fff3 33.2% 33.5%), hsl(var(--h) 30% 14%);
-}
-
-.p3 .track {
-  background: repeating-linear-gradient(45deg, #fff1 0 8px, transparent 8px 24px), repeating-linear-gradient(90deg, transparent 0 33.2%, #fff3 33.2% 33.5%), hsl(var(--h) 30% 14%);
-}
-
-.item {
+.sky {
   position: absolute;
-  width: 44px;
-  height: 44px;
-  margin-left: -22px;
-  filter: drop-shadow(0 0 10px #ffdc7888) drop-shadow(0 8px 6px #0008);
+  inset: 0;
+  background: radial-gradient(1.5px 1.5px at 12% 18%, #fffa, transparent), radial-gradient(1px 1px at 38% 10%, #fff8, transparent), radial-gradient(1.5px 1.5px at 62% 24%, #fff9, transparent), radial-gradient(1px 1px at 86% 14%, #fff8, transparent), radial-gradient(1px 1px at 74% 40%, #fff6, transparent), linear-gradient(hsl(var(--h) 40% 8%), hsl(var(--h) 45% 24%) 85%, hsl(var(--h) 55% 34%));
 }
 
-.item img {
+.orb {
+  position: absolute;
+  top: 9%;
+  right: 12%;
+  width: 62px;
+  height: 62px;
+  border-radius: 50%;
+  background: radial-gradient(circle at 35% 35%, #fff6d8, hsl(var(--h) 80% 70%) 55%, transparent 72%);
+  box-shadow: 0 0 50px hsl(var(--h) 80% 65% / .7);
+}
+
+.far,
+.near {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  transition: transform .4s;
+}
+
+.far {
+  height: 46%;
+  background: hsl(var(--h) 35% 17%);
+  opacity: .8;
+}
+
+.near {
+  height: 32%;
+  background: hsl(var(--h) 38% 9%);
+}
+
+.bg0 .far,
+.bg0 .near {
+  clip-path: polygon(0 100%, 0 55%, 8% 55%, 8% 35%, 16% 35%, 16% 60%, 24% 60%, 24% 25%, 33% 25%, 33% 50%, 42% 50%, 42% 40%, 52% 40%, 52% 65%, 62% 65%, 62% 30%, 72% 30%, 72% 55%, 82% 55%, 82% 38%, 92% 38%, 92% 60%, 100% 60%, 100% 100%);
+}
+
+.bg1 .far,
+.bg1 .near {
+  clip-path: polygon(0 100%, 0 70%, 15% 30%, 30% 65%, 45% 20%, 62% 70%, 78% 35%, 100% 75%, 100% 100%);
+}
+
+.bg2 .far,
+.bg2 .near {
+  clip-path: polygon(0 100%, 0 60%, 20% 45%, 40% 62%, 60% 42%, 80% 60%, 100% 48%, 100% 100%);
+}
+
+.bg3 .far,
+.bg3 .near {
+  clip-path: polygon(0 100%, 0 70%, 6% 70%, 10% 20%, 14% 70%, 30% 70%, 35% 10%, 40% 70%, 60% 70%, 66% 30%, 72% 70%, 88% 70%, 92% 15%, 96% 70%, 100% 70%, 100% 100%);
+}
+
+.world {
+  position: absolute;
+  inset: 0;
+  transition: transform .35s ease-out;
+}
+
+.ground {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 16px;
+  background: linear-gradient(#2a2d44, #0c0d17);
+  border-top: 1px solid #ffffff22;
+}
+
+.block {
+  position: absolute;
+  height: 30px;
+  background: linear-gradient(hsl(var(--bh) 55% 56%), hsl(var(--bh) 58% 40%));
+  box-shadow: inset 0 0 0 1px #ffffff26;
+}
+
+.block::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: 100%;
   width: 100%;
+  height: 10px;
+  background: hsl(var(--bh) 60% 72%);
+  transform: skewX(-45deg);
+  transform-origin: bottom left;
+}
+
+.block::after {
+  content: '';
+  position: absolute;
+  left: 100%;
+  top: 0;
+  width: 10px;
   height: 100%;
-  object-fit: cover;
+  background: hsl(var(--bh) 55% 28%);
+  transform: skewY(-45deg);
+  transform-origin: top left;
+}
+
+.moving {
+  filter: drop-shadow(0 0 14px hsl(var(--bh) 85% 60% / .65));
+}
+
+.cut {
+  animation: fall 1s ease-in forwards;
+}
+
+@keyframes fall {
+  to {
+    transform: translateY(420px) rotate(18deg);
+    opacity: 0;
+  }
+}
+
+.pop {
+  position: absolute;
+  transform: translateX(-50%);
+  font-weight: 800;
+  font-size: .95rem;
+  color: #fff;
+  text-shadow: 0 2px 6px #000;
+  white-space: nowrap;
+  animation: rise .9s ease-out forwards;
   pointer-events: none;
 }
 
-.hazard {
-  width: 100%;
-  height: 100%;
-  border-radius: 10px;
-  display: grid;
-  place-items: center;
-  color: #e8a3a3;
-  background: linear-gradient(#4a2230, #2a1220);
-  border: 2px solid #8a3a4a;
+.perfect {
+  color: #ffe08a;
+  font-size: 1.1rem;
 }
 
-.player {
+@keyframes rise {
+  to {
+    transform: translate(-50%, -46px);
+    opacity: 0;
+  }
+}
+
+.banner {
   position: absolute;
-  bottom: 12%;
-  width: 54px;
-  height: 62px;
-  margin-left: -27px;
-  transition: left .12s ease-out;
-  filter: drop-shadow(0 0 12px #e8b84a);
-  background: linear-gradient(145deg, #ffe08a, #a87420);
-  clip-path: polygon(50% 0, 100% 25%, 100% 75%, 50% 100%, 0 75%, 0 25%);
+  top: 14%;
+  left: 0;
+  right: 0;
+  text-align: center;
+  font-size: 1.5rem;
+  font-weight: 900;
+  letter-spacing: 3px;
+  color: #ffe08a;
+  text-shadow: 0 3px 12px #000, 0 0 22px #e8b84a;
+  animation: bannerIn .35s ease;
+  pointer-events: none;
 }
 
-.shielded {
-  filter: drop-shadow(0 0 4px #9fd0ff) drop-shadow(0 0 14px #9fd0ff);
+@keyframes bannerIn {
+  from {
+    transform: scale(.6);
+    opacity: 0;
+  }
+}
+
+.hint {
+  position: absolute;
+  bottom: 24px;
+  left: 0;
+  right: 0;
+  text-align: center;
+  font-size: .75rem;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: #ffffff77;
+  pointer-events: none;
 }
 
 .powers {
@@ -115,12 +242,12 @@
 }
 
 .powers button {
-  background: var(--surface-grad);
+  background: linear-gradient(#242843, #171a2d);
   color: var(--text);
   border: 1px solid var(--line);
   border-radius: 10px;
   padding: .55rem .3rem;
-  box-shadow: 0 4px 0 var(--edge);
+  box-shadow: 0 4px 0 #0d0e19;
   display: flex;
   gap: .3rem;
   justify-content: center;

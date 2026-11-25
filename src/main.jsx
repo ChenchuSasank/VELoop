@@ -11,10 +11,8 @@ import Rewards from './pages/Rewards/Rewards'
 import Ranks from './pages/Ranks/Ranks'
 import Profile from './pages/Profile/Profile'
 import { ProgressProvider } from './hooks/useProgress'
-import { ThemeProvider } from './hooks/useTheme'
 
 ReactDOM.createRoot(document.getElementById('root')).render(
-  <ThemeProvider>
   <ProgressProvider>
     <BrowserRouter>
       <Routes>
@@ -30,5 +28,4 @@ ReactDOM.createRoot(document.getElementById('root')).render(
       </Routes>
     </BrowserRouter>
   </ProgressProvider>
-  </ThemeProvider>
 )

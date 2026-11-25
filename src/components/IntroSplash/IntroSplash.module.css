@@ -38,7 +38,7 @@
   letter-spacing: 8px;
   font-weight: 800;
   margin: 0;
-  background: linear-gradient(var(--text), var(--gold));
+  background: linear-gradient(#fff, var(--gold));
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
@@ -54,7 +54,7 @@
 .line {
   width: 160px;
   height: 4px;
-  background: var(--track);
+  background: #0f1120;
   border-radius: 9px;
   overflow: hidden;
   margin-top: .8rem;

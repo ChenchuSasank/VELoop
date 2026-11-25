@@ -1,24 +1,29 @@
-import { useState } from 'react'
-import { Check, Lock } from 'lucide-react'
-import { levelConfig, milestones } from '../../data/levels'
+import { useState, useEffect } from 'react'
+import { Check, Lock, Star } from 'lucide-react'
+import { useProgress } from '../../hooks/useProgress'
+import { levelConfig, levelReward } from '../../data/levels'
 import shared from '../../styles/shared.module.css'
 import styles from './LevelRoadmap.module.css'
 
+const SHOWN = 8
+
 export default function LevelRoadmap({ currentLevel }) {
+  const { stars } = useProgress()
   const [selected, setSelected] = useState(currentLevel)
-  const start = Math.max(1, currentLevel - 2)
-  const nodes = Array.from({ length: 8 }, (_, k) => start + k)
-  const cfg = levelConfig(selected)
-  const reward = milestones.find((m) => m.level === selected)
+  useEffect(() => { setSelected(currentLevel) }, [currentLevel])
+
+  const start = Math.max(1, currentLevel - 3)
+  const range = Array.from({ length: SHOWN }, (_, i) => start + i)
+  const info = levelConfig(selected)
 
   const stateOf = (n) => (n < currentLevel ? 'completed' : n === currentLevel ? 'current' : n === currentLevel + 1 ? 'next' : 'locked')
   const label = { completed: 'Completed', current: 'You Are Here', next: 'Next Goal', locked: 'Locked' }
 
   return (
     <section className={shared.card} aria-label="Level roadmap">
-      <h3 className={shared.cardTitle}>Level Roadmap</h3>
+      <h3 className={shared.cardTitle}>Level Roadmap · Levels {range[0]}–{range[range.length - 1]}</h3>
       <div className={styles.track}>
-        {nodes.map((n) => {
+        {range.map((n) => {
           const s = stateOf(n)
           return (
             <button key={n} className={`${styles.node} ${styles[s]}`} onClick={() => setSelected(n)} aria-pressed={selected === n}>
@@ -30,8 +35,11 @@ export default function LevelRoadmap({ currentLevel }) {
         })}
       </div>
       <div className={styles.details}>
-        <b>Level {selected} · {cfg.name}</b>
-        <span className={shared.muted}>Goal: {cfg.goal.label} ({cfg.goal.amount}) · Reward: {reward ? reward.text : 'XP + stars'}</span>
+        <b>Level {selected} · {info.name}</b>
+        <span className={shared.muted}>Goal: {info.goal.label} ({info.goal.amount}) · Reward: {levelReward(selected)}</span>
+        {stars[selected] > 0 && (
+          <span className={shared.muted}>Your best: {Array.from({ length: stars[selected] }, (_, i) => <Star key={i} size={12} fill="#ffe08a" color="#ffe08a" />)}</span>
+        )}
       </div>
     </section>
   )

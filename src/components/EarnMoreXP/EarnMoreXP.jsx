@@ -21,7 +21,7 @@ export default function EarnMoreXP() {
       <h3 className={shared.cardTitle}>Earn More XP & Rewards</h3>
       <div className={styles.grid}>
         {earnItems.map((item) => {
-                    const soon = item.status === 'soon'
+          const soon = item.status === 'soon'
           return (
             <button key={item.id} className={styles.cardBtn} disabled={soon} onClick={() => handleClick(item)}>
               <img src={icons[item.id]} alt="" width="44" height="44" className={styles.icon} />
