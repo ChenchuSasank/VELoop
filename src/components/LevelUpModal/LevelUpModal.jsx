@@ -1,4 +1,4 @@
-import badge from '../../assets/level-up-badge.png'
+import LevelBadge from '../LevelBadge/LevelBadge'
 import shared from '../../styles/shared.module.css'
 import styles from './LevelUpModal.module.css'
 
@@ -8,7 +8,7 @@ export default function LevelUpModal({ level, onContinue }) {
       <div className={styles.box}>
         <h2 className={styles.title}>LEVEL UP!</h2>
         <p className={shared.muted}>You've reached</p>
-        <img src={badge} alt={`Level ${level.level}`} className={styles.badgeImg} />
+        <LevelBadge n={level.level} size={150} state="current" />
         <h3>Level {String(level.level).padStart(2, '0')} · {level.name}</h3>
         <div className={styles.reward}>{level.reward}</div>
         <p className={shared.muted}>Achievement unlocked (demo reward)</p>

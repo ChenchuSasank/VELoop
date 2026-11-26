@@ -1,8 +1,9 @@
 import { useState, useEffect } from 'react'
-import { Check, Lock, Star } from 'lucide-react'
+import { Star } from 'lucide-react'
 import { useProgress } from '../../hooks/useProgress'
 import { levelConfig, levelReward } from '../../data/levels'
 import shared from '../../styles/shared.module.css'
+import LevelBadge from '../LevelBadge/LevelBadge'
 import styles from './LevelRoadmap.module.css'
 
 const SHOWN = 8
@@ -27,7 +28,7 @@ export default function LevelRoadmap({ currentLevel }) {
           const s = stateOf(n)
           return (
             <button key={n} className={`${styles.node} ${styles[s]}`} onClick={() => setSelected(n)} aria-pressed={selected === n}>
-              <span className={styles.circle}>{s === 'completed' ? <Check size={16} /> : s === 'locked' ? <Lock size={14} /> : n}</span>
+              <LevelBadge n={n} size={58} state={s === 'completed' ? 'done' : s} />
               <b>Level {n}</b>
               <small>{label[s]}</small>
             </button>

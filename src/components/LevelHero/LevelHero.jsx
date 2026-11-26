@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react'
 import { Zap, ClipboardList, Flame, Info } from 'lucide-react'
 import shared from '../../styles/shared.module.css'
+import LevelBadge from '../LevelBadge/LevelBadge'
 import styles from './LevelHero.module.css'
 
 export default function LevelHero({ level, name, xp, sub, pct, barText, user }) {
@@ -10,7 +11,7 @@ export default function LevelHero({ level, name, xp, sub, pct, barText, user }) 
   return (
     <section className={shared.card} aria-label="Current level">
       <div className={styles.top}>
-        <div className={styles.badgeWrap}><div className={styles.badge}><span>LEVEL</span><b>{String(level).padStart(2, '0')}</b></div></div>
+        <div className={styles.badgeWrap}><LevelBadge n={level} size={112} state="current" /></div>
         <div className={styles.xpBox}>
           <div className={styles.xp}>{xp.toLocaleString()} XP</div>
           <div className={shared.muted}>
