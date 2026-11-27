@@ -84,7 +84,7 @@ export default function LevelDashboard() {
       <h1 className={styles.title}>{getGreeting()}, {data.name}! 👋</h1>
       <p className={styles.sub}>Level up your journey and unlock epic rewards every day.</p>
 
-      <Link to="/Lvl-Dashboard/levels" className="d-block mb-3 text-decoration-none">
+      <Link to={`/Lvl-Dashboard/play/${level}${completed > 0 ? '?go=1' : ''}`} className="d-block mb-3 text-decoration-none">
         <div className={styles.goldBtn} style={{ textAlign: 'center' }}>{level === 1 && !progress.stars[1] ? 'Start Level 1' : `Continue Level ${level}`}</div>
       </Link>
       <div className="row g-3">

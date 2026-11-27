@@ -9,9 +9,9 @@ import shared from '../../styles/shared.module.css'
 import pages from '../../pages/Pages.module.css'
 import styles from './LevelRunner.module.css'
 
-export default function LevelRunner({ n, onNext, onWin, showTitle = true }) {
+export default function LevelRunner({ n, onNext, onWin, showTitle = true, autoStart = false }) {
   const { completed, complete, stars } = useProgress()
-  const [phase, setPhase] = useState('intro')
+  const [phase, setPhase] = useState(autoStart ? 'play' : 'intro')
   const [result, setResult] = useState(null)
   const [round, setRound] = useState(0)
 
