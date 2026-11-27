@@ -1,16 +1,18 @@
+import { useNavigate } from 'react-router-dom'
 import orb from '../../assets/xp-orb.png'
 import coin from '../../assets/ve-coin.png'
 import shared from '../../styles/shared.module.css'
 import styles from './XPActivity.module.css'
 
 export default function XPActivity({ items, totalXP = 0, totalVEs = 0 }) {
+  const navigate = useNavigate()
   return (
     <section className={shared.card} aria-label="Recent activity">
       <h3 className={shared.cardTitle}>Recent Activity</h3>
       {items.length === 0 ? (
         <div className={styles.empty}>
           <p>Your XP journey starts here.</p>
-          <button className={shared.goldBtn}>Start Earning XP</button>
+          <button className={shared.goldBtn} onClick={() => navigate('/Lvl-Dashboard/levels')}>Start Earning XP</button>
         </div>
       ) : (
         <ul className={styles.list}>

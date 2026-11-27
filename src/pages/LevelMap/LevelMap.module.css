@@ -148,7 +148,7 @@
 .path {
     position: relative;
     display: flex;
-    flex-direction: column-reverse;
+    flex-direction: column;
     padding: .5rem 0 1rem;
 }
 
@@ -161,7 +161,7 @@
     width: 6px;
     margin-left: -3px;
     border-radius: 9px;
-    background: linear-gradient(to top, #ffe08a 0, #c8902f var(--fill), #232640 var(--fill));
+    background: linear-gradient(to bottom, #ffe08a 0, #c8902f var(--fill), #232640 var(--fill));
     box-shadow: 0 0 14px rgba(232, 184, 74, .25);
 }
 
@@ -290,5 +290,24 @@
 @media (prefers-reduced-motion: reduce) {
     .halo::before {
         animation: none;
+    }
+}
+
+.jump {
+    justify-self: start;
+    display: inline-flex;
+    align-items: center;
+    gap: .4rem;
+    background: rgba(10, 11, 20, .55);
+    color: var(--gold);
+    border: 1px solid rgba(232, 184, 74, .4);
+    border-radius: 99px;
+    padding: .3rem .9rem;
+    font-size: .8rem;
+}
+
+@media (max-width: 575px) {
+    .jump {
+        justify-self: center;
     }
 }

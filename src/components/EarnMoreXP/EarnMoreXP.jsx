@@ -1,3 +1,5 @@
+import { useState } from 'react'
+import { useNavigate } from 'react-router-dom'
 import watch from '../../assets/icon-watch.png'
 import daily from '../../assets/icon-daily.png'
 import refer from '../../assets/icon-refer.png'
@@ -11,14 +13,17 @@ import styles from './EarnMoreXP.module.css'
 const icons = { watch, daily, refer, game, mini, streak }
 
 export default function EarnMoreXP() {
+  const navigate = useNavigate()
+  const [note, setNote] = useState('')
   const handleClick = (item) => {
-    if (item.id === 'game') window.scrollTo({ top: 0, behavior: 'smooth' })
-    else alert(`${item.title}: connect the existing route here.`)
+    if (item.id === 'game') navigate('/Lvl-Dashboard/levels')
+    else setNote(`${item.title} is part of the main VELOOP app. Its route is not connected in this demo yet.`)
   }
 
   return (
     <section className={shared.card} aria-label="Earn more XP and rewards">
       <h3 className={shared.cardTitle}>Earn More XP & Rewards</h3>
+      {note && <p className={styles.note} role="status">{note}</p>}
       <div className={styles.grid}>
         {earnItems.map((item) => {
           const soon = item.status === 'soon'

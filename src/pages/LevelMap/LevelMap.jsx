@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import { Link } from 'react-router-dom'
-import { Gift, Star, Lock, Play, Target } from 'lucide-react'
+import { Gift, Star, Lock, Play, Target, LocateFixed } from 'lucide-react'
 import { useProgress } from '../../hooks/useProgress'
 import { levelConfig, levelReward, nextMilestone, milestones } from '../../data/levels'
 import LevelBadge from '../../components/LevelBadge/LevelBadge'
@@ -37,6 +37,9 @@ export default function LevelMap() {
             <span><b>{xp}</b> XP</span>
           </div>
           <div className={shared.bar}><div className={shared.fill} style={{ width: pct + '%' }} /></div>
+          {unlocked > 4 && (
+            <button className={styles.jump} onClick={() => { setSelected(unlocked); document.getElementById(`lvl-${unlocked}`)?.scrollIntoView({ block: 'center', behavior: 'smooth' }) }}><LocateFixed size={14} /> Go to my level</button>
+          )}
           <p className={styles.sub}>
             {milestone ? `${completed} of ${milestone.level} levels to your next reward: ${milestone.text}` : 'All milestone rewards reached'}
           </p>
@@ -66,7 +69,7 @@ export default function LevelMap() {
           {rows.map((n, i) => {
             const c = levelConfig(n)
             return (
-              <button key={n} className={`${styles.row} ${i % 2 ? styles.flip : ''} ${selected === n ? styles.sel : ''}`} onClick={() => setSelected(n)} aria-label={`Level ${n}`} style={{ '--h': c.hue }}>
+              <button key={n} id={`lvl-${n}`} className={`${styles.row} ${i % 2 ? styles.flip : ''} ${selected === n ? styles.sel : ''}`} onClick={() => setSelected(n)} aria-label={`Level ${n}`} style={{ '--h': c.hue }}>
                 <span className={styles.node}><LevelBadge n={n} size={78} state={stateOf(n)} /></span>
                 <span className={styles.label}>
                   <b>Level {n}</b>

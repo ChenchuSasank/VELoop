@@ -7,7 +7,7 @@ const BLOCK_H = 30
 const GROUND = 16
 const START_W = 46
 
-export default function LevelGame({ config, boostUnlocked, onFinish }) {
+export default function LevelGame({ config, boostUnlocked, onFinish, fill = false }) {
   const [, setFrame] = useState(0)
   const stageRef = useRef(null)
   const [used, setUsed] = useState({ slow: false, repair: false, boost: false })
@@ -87,7 +87,9 @@ export default function LevelGame({ config, boostUnlocked, onFinish }) {
     }
     setUsed((u) => ({ ...u, [name]: true }))
   }
+
   useEffect(() => { stageRef.current?.focus({ preventScroll: true }) }, [])
+
   useEffect(() => {
     const loop = setInterval(() => {
       const s = g.current
@@ -106,13 +108,15 @@ export default function LevelGame({ config, boostUnlocked, onFinish }) {
   }, [config])
 
   const s = g.current
-  const camera = Math.max(0, s.stack.length - 6) * BLOCK_H
+  const stageH = stageRef.current ? stageRef.current.clientHeight : 440
+  const visible = Math.max(6, Math.round(stageH / BLOCK_H / 2.3))
+  const camera = Math.max(0, s.stack.length - visible) * BLOCK_H
   const hueOf = (level) => (config.hue + level * 7) % 360
   const goalNow = config.goal.type === 'floors' ? s.floors : s.perfects
   const bottomOf = (level) => GROUND + level * BLOCK_H
 
   return (
-    <div className={`${styles.wrap} ${styles['bg' + config.pattern]}`} style={{ '--h': config.hue }}>
+    <div className={`${styles.wrap} ${fill ? styles.fill : ''} ${styles['bg' + config.pattern]}`} style={{ '--h': config.hue }}>
       <div className={styles.hud}>
         <span><Layers size={14} /> {goalNow} / {config.goal.amount}</span>
         <span className={styles.score}>{s.score}</span>

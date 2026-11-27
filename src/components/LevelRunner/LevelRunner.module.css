@@ -19,3 +19,49 @@
     margin: 0;
     font-size: 1.5rem;
 }
+
+.overlay {
+    position: fixed;
+    inset: 0;
+    z-index: 2000;
+    background: radial-gradient(ellipse at 50% 0%, hsl(var(--h) 40% 16%), hsl(var(--h) 45% 5%));
+    display: grid;
+    justify-items: center;
+}
+
+.frame {
+    width: 100%;
+    max-width: 820px;
+    height: 100dvh;
+    display: grid;
+    grid-template-rows: auto minmax(0, 1fr);
+    padding: .6rem;
+    gap: .5rem;
+}
+
+.bar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: .6rem;
+}
+
+.bar b {
+    font-size: .95rem;
+    letter-spacing: .04em;
+}
+
+.exit {
+    display: inline-flex;
+    align-items: center;
+    gap: .3rem;
+    background: rgba(17, 19, 31, .85);
+    color: var(--text);
+    border: 1px solid rgba(255, 255, 255, .15);
+    border-radius: 10px;
+    padding: .4rem .8rem;
+}
+
+.game {
+    min-height: 0;
+}

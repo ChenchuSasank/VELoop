@@ -258,3 +258,13 @@
 .powers button:disabled {
   opacity: .4;
 }
+
+.fill {
+  height: 100%;
+  grid-template-rows: auto auto minmax(0, 1fr) auto;
+}
+
+.fill .stage {
+  height: 100%;
+  min-height: 0;
+}
